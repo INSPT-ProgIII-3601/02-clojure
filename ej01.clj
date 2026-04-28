@@ -1,1 +1,1 @@
-; Pendiente
+(defn tercer-angulo [] (- 180 180)) ; Falta terminar
