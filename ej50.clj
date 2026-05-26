@@ -15,32 +15,34 @@
 (clojure.string/replace #"DD" "M")
 (clojure.string/replace #"DCD" "CM"))))
 
+(map a-romano-oficial '(4 87 99 600 3999))
+(map (fn [n] (time (a-romano-oficial n))) '(4 87 99 600 3999))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn a-romano-gerson [n]
-(let [romanos[[1000 "M"]
-  [900 "CM"]
-  [500 "D"]
-  [400 "CD"]
-  [100 "C"]
-  [90 "XC"]
-  [50 "L"]
-  [40 "XL"]
-  [10 "X"]
-  [9 "IX"]
-  [5 "V"]
-  [4 "IV"]
-  [1 "I"]]]
+(let [valores-romanos [{:numero 1000, :romano "M"}
+ {:numero 900, :romano "CM"}
+ {:numero 500, :romano "D"}
+ {:numero 400, :romano "CD"}
+ {:numero 100, :romano "C"}
+ {:numero 90, :romano "XC"}
+ {:numero 50, :romano "L"}
+ {:numero 40, :romano "XL"}
+ {:numero 10, :romano "X"}
+ {:numero 9, :romano "IX"}
+ {:numero 5, :romano "V"}
+ {:numero 4, :romano "IV"}
+ {:numero 1, :romano "I"}]]
 
   (loop [num n num_convertido "" simbolos romanos]
     
-    ;si 0 = fin
+    ;si n=0 entonces fin
 
     ;sino  
-    ;preg: el valor del primer romano es menor o igual que mi num?
-    ;si:recur:  resto el valor a n, escribo esa letra en num_convertidos y vuelvo a dar una vuelta. 
+    ;si el valor del primer romano es menor o igual que n
+        ; recur:  resto el valor a n, escribo esa letra en num_convertidos y vuelvo a dar una vuelta. 
     
-    ;no: recur: volvemos a dar una vuelta sacando el primer valor de simbolos 
+        ; recur: volvemos a dar una vuelta sacando el primer valor de valores-romanos 
     
     
     
@@ -50,5 +52,6 @@
   
   )  
 
-; 50.Definir una función que reciba un número entero y devuelva una cadena con su representación en números romanos.
+(map a-romano-gerson '(4 87 99 600 3999))
+(map (fn [n] (time (a-romano-gerson n))) '(4 87 99 600 3999))
 
